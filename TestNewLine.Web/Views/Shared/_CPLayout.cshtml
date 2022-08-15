@@ -1,0 +1,423 @@
+﻿@{
+    string Action = null;
+    string Controller = null;
+    string currentURL = null;
+    try
+    {
+        Action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+        Controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+        currentURL = Controller + "/" + Action;
+
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+}
+
+<html lang="en" @*direction="rtl" style="direction: rtl;"*@>
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] </title>
+    <link rel="icon" href="~/Images/Logo/newLine.jfif"
+          type="image/x-icon">
+
+    <meta name="description" content="Initialized via remote ajax json data" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="stylesheet" href="~/css/animate.css" />
+    <link href="~/css/myHomeCss.css" rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/LogoIcon.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-foot .datatable-row > .datatable-cell > span, .datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-head .datatable-row > .datatable-cell > span {
+            color: #3699FF !important;
+            font-size: 1rem !important;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: .1rem;
+        }
+
+        .datatable-cell {
+            padding: 5px !important;
+        }
+
+        .d-flex flex-column flex-row-fluid wrapper {
+            padding-top: 40px !important;
+        }
+
+        .content d-flex flex-column flex-column-fluid {
+            padding-top: 0px !important;
+        }
+
+        .menu-text {
+            margin-right: 15px !important;
+            font-size: 14px !important;
+        }
+
+        .menu-link {
+            padding-bottom: 10px !important;
+        }
+
+        #kt_wrapper {
+            padding-top: 70px !important;
+        }
+
+        .card-body {
+            padding-top: 5px !important;
+        }
+    </style>
+
+</head>
+
+<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <div class="page-loader page-loader-logo">
+        <img alt="Logo" class="max-h-300px" src="~/Images/Logo/newLine.jfif" />
+        <div class="spinner spinner-primary"></div>
+    </div>
+    <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+        <a href="~/Home/Index">
+            <img alt="Logo" width="50%" src="~/ThemImages/logo.png" />
+
+        </a>
+        <div class="d-flex align-items-center">
+            <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
+                <span></span>
+            </button>
+            <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24" />
+                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </g>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-root">
+        <div class="d-flex flex-row flex-column-fluid page">
+            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+                <div class="brand flex-column-auto" id="kt_brand">
+                    <a href="~/Home/Index" class="brand-logo">
+                        <img style="margin-right:10px !important" alt="Logo" width="40%" src="~/Images/Logo/newLine.jfif" />
+                    </a>
+                    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+                        <span class="svg-icon svg-icon svg-icon-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                    <path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)" />
+                                    <path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)" />
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
+                        <ul class="menu-nav">
+
+
+                            @* Start Dashboard*@
+
+                            <li class="menu-item menu-item-active wow slideInLeft" data-wow-duration=".5s" data-wow-offset="200" aria-haspopup="true">
+                                <a href="~/Home/Index" class="menu-link">
+                                    <span class="svg-icon menu-icon">
+
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Home.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                    </span>
+
+                                    <span class="menu-text"><b>Dashboard</b> </span>
+                                </a>
+                            </li>
+
+          
+              
+
+
+
+
+
+
+
+
+
+
+
+                      
+
+
+
+                                        @* Start Contrcts*@
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="svg-icon menu-icon">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/User.svg-->
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+
+                                        </span>
+                                    </span>
+                                    <span class="menu-text"> <b>Manage Admins</b> </span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu" kt-hidden-height="200" style="display: none; overflow: hidden;">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                            <span class="menu-link">
+                                                <span class="menu-text"> <b>Manage Admins</b> </span>
+                                            </span>
+                                        </li>
+
+                                        <li class="menu-item menu-item wow slideInRight" data-wow-duration=".5s" data-wow-offset="200" aria-haspopup="true">
+                                            <a href="~/User/Index" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+
+                                                        <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Shield-user.svg-->
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24" />
+                                                                <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" fill="#000000" opacity="0.3" />
+                                                                <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z" fill="#000000" opacity="0.3" />
+                                                                <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" fill="#000000" opacity="0.3" />
+                                                            </g>
+                                                        </svg><!--end::Svg Icon-->
+
+                                                    </span>
+                                                </span>
+                                                <span class="menu-text"> <b>Admins</b> </span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+ 
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <span class="svg-icon menu-icon">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Weather/Fog.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.3" x="2" y="17" width="20" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.3" x="2" y="9" width="5" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.3" x="16" y="13" width="6" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.3" x="9" y="9" width="13" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.3" x="2" y="13" width="12" height="2" rx="1" />
+                                                </g>
+                                            </svg><!--end::Svg Icon-->
+                                        </span>
+                                    </span>
+                                    <span class="menu-text"> <b>Blog</b> </span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu" kt-hidden-height="200" style="display: none; overflow: hidden;">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                            <span class="menu-link">
+                                                <span class="menu-text"> <b>Blog</b> </span>
+                                            </span>
+                                        </li>
+
+                                        <li class="menu-item menu-item wow slideInRight" data-wow-duration=".5s" data-wow-offset="200" aria-haspopup="true">
+                                            <a href="~/Post/Index" class="menu-link">
+                                                <span class="svg-icon menu-icon">
+                                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                                        <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Earth.svg-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24" />
+                                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="9" />
+                                                                <path d="M11.7357634,20.9961946 C6.88740052,20.8563914 3,16.8821712 3,12 C3,11.9168367 3.00112797,11.8339369 3.00336944,11.751315 C3.66233009,11.8143341 4.85636818,11.9573854 4.91262842,12.4204038 C4.9904938,13.0609191 4.91262842,13.8615942 5.45804656,14.101772 C6.00346469,14.3419498 6.15931561,13.1409372 6.6267482,13.4612567 C7.09418079,13.7815761 8.34086797,14.0899175 8.34086797,14.6562185 C8.34086797,15.222396 8.10715168,16.1034596 8.34086797,16.2636193 C8.57458427,16.423779 9.5089688,17.54465 9.50920913,17.7048097 C9.50956962,17.8649694 9.83857487,18.6793513 9.74040201,18.9906563 C9.65905192,19.2487394 9.24857641,20.0501554 8.85059781,20.4145589 C9.75315358,20.7620621 10.7235846,20.9657742 11.7357634,20.9960544 L11.7357634,20.9961946 Z M8.28272988,3.80112099 C9.4158415,3.28656421 10.6744554,3 12,3 C15.5114513,3 18.5532143,5.01097452 20.0364482,7.94408274 C20.069657,8.72412177 20.0638332,9.39135321 20.2361262,9.6327358 C21.1131932,10.8600506 18.0995147,11.7043158 18.5573343,13.5605384 C18.7589671,14.3794892 16.5527814,14.1196773 16.0139722,14.886394 C15.4748026,15.6527403 14.1574598,15.137809 13.8520064,14.9904917 C13.546553,14.8431744 12.3766497,15.3341497 12.4789081,14.4995164 C12.5805657,13.664636 13.2922889,13.6156126 14.0555619,13.2719546 C14.8184743,12.928667 15.9189236,11.7871741 15.3781918,11.6380045 C12.8323064,10.9362407 11.963771,8.47852395 11.963771,8.47852395 C11.8110443,8.44901109 11.8493762,6.74109366 11.1883616,6.69207022 C10.5267462,6.64279981 10.170464,6.88841096 9.20435656,6.69207022 C8.23764828,6.49572949 8.44144409,5.85743687 8.2887174,4.48255778 C8.25453994,4.17415686 8.25619136,3.95717082 8.28272988,3.80112099 Z M20.9991771,11.8770357 C20.9997251,11.9179585 21,11.9589471 21,12 C21,16.9406923 17.0188468,20.9515364 12.0895088,20.9995641 C16.970233,20.9503326 20.9337111,16.888438 20.9991771,11.8770357 Z" fill="#000000" opacity="0.3" />
+                                                            </g>
+                                                        </svg><!--end::Svg Icon-->
+                                                    </span>
+                                                </span>
+                                                <span class="menu-text"> <b>Post Blog</b> </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+
+             
+
+
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted font-weight-bold mr-2">@DateTime.Now.Year©</span>
+                            @*///////// social media ////////////*@
+                            <a href="~/Home/Index" class="text-dark-75 text-hover-primary">Tayf For in-kind donations</a>
+
+                        </div>
+                        <div class="nav nav-dark">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin::User Panel-->
+    <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
+        <!--begin::Header-->
+        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
+            <h3 class="font-weight-bold m-0">
+                information user
+            </h3>
+            <a class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                <i class="ki ki-close icon-xs text-muted"></i>
+            </a>
+        </div>
+        <!--end::Header-->
+        <!--begin::Content-->
+        <div class="offcanvas-content pr-5 mr-n5">
+            <!--begin::Header-->
+            <div class="d-flex align-items-center mt-5">
+                <div class="symbol symbol-100 mr-5">
+                    <div class="symbol-label" style="background-image: url('/images/@ViewBag.UserImg')"></div>
+                    <i class="symbol-badge bg-success"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">@ViewBag.FullName</a>
+                    <div class="text-muted mt-1">@ViewBag.UserType</div>
+                    <div class="navi mt-2">
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Identity/Account/Login" )">
+                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">log out</button>
+                        </form>
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Identity/Account/Login" )">
+                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Profile Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--end::Header-->
+        </div>
+        <!--end::Content-->
+    </div>
+
+    <!-- end::User Panel-->
+    <!--begin::Modal-->
+    <div class="modal fade" data-toggle="PopUp" data-target="modal" id="PopUp" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select2 Examples</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Warning !</h3>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size: 18px"> Are You Sure ? </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" id="Confirm" class="btn btn-danger">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end::Modal-->
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/vendors.bundle.js" type="text/javascript"></script>
+    <script src="~/nprogress-master/nprogress.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+    <script src="~/assets/js/MainLayout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        const permissions = {
+            0: { 'name': 'Dashboard' },
+            1: { 'name': 'Supervisor' },
+            2: { 'name': 'Role' },
+        };
+    </script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", required: false)
+    <!--  -->
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
